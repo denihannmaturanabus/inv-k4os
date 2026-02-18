@@ -69,7 +69,7 @@ const Details: React.FC = () => {
       >
         <div className="aspect-[3/4] rounded-3xl overflow-hidden glass relative group">
           <img 
-            src="/public/img/details.jpg" 
+            src="/img/details.jpg" 
             alt="Venue Vibe" 
             className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           />

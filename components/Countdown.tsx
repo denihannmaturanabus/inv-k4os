@@ -82,6 +82,27 @@ const Countdown = () => {
           />
         </motion.div>
 
+        {/* Té Kila flotante (abajo izquierda) */}
+        <motion.div
+          animate={{ 
+            y: [0, 10, 0],
+            rotate: [5, -8, 5]
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 4,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+          className="absolute -left-12 bottom-4 md:-left-16 md:bottom-8 w-32 h-32 md:w-40 md:h-40 z-20"
+        >
+          <img 
+            src="/img/tekila.png" 
+            alt="Té Kila" 
+            className="w-full h-full object-contain drop-shadow-2xl"
+          />
+        </motion.div>
+
         <h3 className="text-2xl md:text-4xl font-black text-white mb-2 mt-4">
           Ven a tomar TE KILA
         </h3>
