@@ -24,7 +24,7 @@ const Details: React.FC = () => {
             </div>
             <div>
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Fecha</p>
-              <p className="text-xl font-bold text-gray-900">Viernes, 6 de Marzo</p>
+              <p className="text-xl font-bold text-gray-900">Viernes, 7 de Marzo</p>
             </div>
           </div>
 

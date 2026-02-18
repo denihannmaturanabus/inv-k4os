@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="z-10 px-4"
+        className="z-10 px-4 mt-24 md:mt-28"
       >
         <div className="flex justify-center mb-6">
               <FloatingHeart />

@@ -12,7 +12,7 @@ const Countdown = () => {
 
   useEffect(() => {
     // FECHA OBJETIVO: 6 de Marzo 2026 a las 21:00
-    const targetDate = new Date('2026-03-06T19:00:00').getTime();
+    const targetDate = new Date('2026-03-07T19:00:00').getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -107,7 +107,7 @@ const Countdown = () => {
           Ven a tomar TE KILA
         </h3>
         <p className="text-purple-300 font-medium mb-12 flex items-center justify-center gap-2">
-          6 de Marzo, 2026 - 19:00 HS <Heart size={16} fill="currentColor" />
+          7 de Marzo, 2026 - 19:00 HS <Heart size={16} fill="currentColor" />
         </p>
 
         {/* Grid del Contador */}

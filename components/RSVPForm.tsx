@@ -9,23 +9,24 @@ const RSVPForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('sending');
     
-    // Construir mensaje de WhatsApp
-    const mensaje = `¡Hola! Confirmo asistencia a la fiesta de Monse 🎉\n\n` +
-      `👤 Nombre: ${formData.name}\n` +
-      `👥 Cantidad de personas: ${formData.guests}\n` +
-      `${formData.comment ? `💬 Mensaje: ${formData.comment}\n` : ''}` +
-      `\n¡Nos vemos el 6 de Marzo! 🎸🎂`;
+    // Construir mensaje de WhatsApp sin emojis para mayor compatibilidad
+    const mensaje = `Hola! Confirmo asistencia a la fiesta de Monse\n\n` +
+      `Nombre: ${formData.name}\n` +
+      `Cantidad de personas: ${formData.guests}\n` +
+      `${formData.comment ? `Mensaje: ${formData.comment}\n` : ''}` +
+      `\nNos vemos el 6 de Marzo!`;
     
     const numeroWhatsApp = '56958025851';
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
     
+    // Abrir WhatsApp inmediatamente (antes del setTimeout para evitar que se bloquee)
+    window.open(urlWhatsApp, '_blank');
+    
+    setStatus('sending');
     setTimeout(() => {
       setStatus('success');
-      // Abrir WhatsApp en una nueva pestaña
-      window.open(urlWhatsApp, '_blank');
-    }, 2000);
+    }, 1500);
   };
 
   return (
