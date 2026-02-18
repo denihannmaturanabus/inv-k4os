@@ -10,8 +10,21 @@ const RSVPForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    
+    // Construir mensaje de WhatsApp
+    const mensaje = `¡Hola! Confirmo asistencia a la fiesta de Monse 🎉\n\n` +
+      `👤 Nombre: ${formData.name}\n` +
+      `👥 Cantidad de personas: ${formData.guests}\n` +
+      `${formData.comment ? `💬 Mensaje: ${formData.comment}\n` : ''}` +
+      `\n¡Nos vemos el 6 de Marzo! 🎸🎂`;
+    
+    const numeroWhatsApp = '56958025851';
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    
     setTimeout(() => {
       setStatus('success');
+      // Abrir WhatsApp en una nueva pestaña
+      window.open(urlWhatsApp, '_blank');
     }, 2000);
   };
 
