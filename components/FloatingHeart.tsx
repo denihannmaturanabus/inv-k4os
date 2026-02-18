@@ -72,7 +72,7 @@ function Model() {
 
 export default function FloatingHeart() {
   return (
-    <div className="w-full h-[600px] cursor-grab active:cursor-grabbing relative bg-white overflow-hidden">
+    <div className="w-full h-[600px] cursor-grab active:cursor-grabbing relative bg-black overflow-hidden">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 40 }}>
         <Suspense fallback={null}>
           <Stage environment="city" intensity={0.6} shadows={false}>
