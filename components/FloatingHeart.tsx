@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Sparkles } from '@react-three/drei';
+import { useGLTF, Sparkles, Environment } from '@react-three/drei';
 import { Suspense, useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
@@ -7,22 +7,24 @@ function Model() {
   const { scene } = useGLTF('/heart_optimized.glb');
   const groupRef = useRef<THREE.Group>(null);
 
-  // 🔥 Corregir orientación (Blender Z-up → Three Y-up)
+  // ✅ Centrar modelo (sin rotarlo raro)
   useMemo(() => {
-    scene.rotation.x = Math.PI / 2;
+    const box = new THREE.Box3().setFromObject(scene);
+    const center = box.getCenter(new THREE.Vector3());
+    scene.position.sub(center);
   }, [scene]);
 
-  // Movimiento
+  // ✅ Movimiento
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
 
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.004; // giro lento
-      groupRef.current.position.y = Math.sin(t * 0.8) * 0.1; // flotación
+      groupRef.current.rotation.y += 0.004;
+      groupRef.current.position.y = Math.sin(t * 0.8) * 0.1;
     }
   });
 
-  // 🔥 TU LÓGICA DE COLORES ORIGINAL (intacta)
+  // ✅ TU LÓGICA ORIGINAL DE COLORES — INTACTA
   useMemo(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
@@ -62,29 +64,28 @@ function Model() {
     <primitive
       ref={groupRef}
       object={scene}
-      scale={2.2}
+      scale={2}
     />
   );
 }
 
 export default function FloatingHeart() {
   return (
-    <div className="w-full h-[500px] bg-white flex items-center justify-center overflow-hidden">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 40 }}
-      >
+    <div className="w-full h-[450px] bg-white flex items-center justify-center overflow-hidden">
+      <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
         <Suspense fallback={null}>
 
-          {/* Luces simples sin sombra */}
-          <ambientLight intensity={1.2} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+          {/* 🔥 Environment SIN sombra */}
+          <Environment preset="city" />
+
+          {/* Luz suave */}
+          <ambientLight intensity={0.8} />
 
           <Model />
 
           <Sparkles
-            count={40}
-            scale={6}
+            count={30}
+            scale={5}
             size={2}
             speed={0.4}
             color="#ce88b0"
