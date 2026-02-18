@@ -59,15 +59,15 @@ const Hero: React.FC = () => {
         transition={{ duration: 1 }}
         className="z-10 px-4"
       >
-        <div className="flex justify-center mb-1">
+        <div className="flex justify-center -mb-8">
               <FloatingHeart />
         </div>
 
-        <h1 className="text-5xl md:text-9xl font-black mb-4 tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          MONSE <span className="block text-3xl md:text-6xl not-italic text-white">CUMPLE 9</span>
+        <h1 className="text-4xl md:text-9xl font-black mb-3 tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+          MONSE <span className="block text-2xl md:text-6xl not-italic text-white">CUMPLE 9</span>
         </h1>
         
-        <p className="text-base md:text-2xl font-light text-gray-300 mb-12 max-w-xs md:max-w-lg mx-auto leading-relaxed px-4">
+        <p className="text-sm md:text-2xl font-light text-gray-300 mb-12 max-w-sm md:max-w-lg mx-auto leading-relaxed px-6">
           Acompañame a celabrar mi cumplaños al estilo <span className="text-purple-400 font-bold underline decoration-wavy">K4OS</span> 4ever!
         </p>
       </motion.div>
