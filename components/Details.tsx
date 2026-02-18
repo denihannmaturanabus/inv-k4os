@@ -24,7 +24,7 @@ const Details: React.FC = () => {
             </div>
             <div>
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Fecha</p>
-              <p className="text-xl font-bold text-gray-900">Jueves, 6 de Marzo</p>
+              <p className="text-xl font-bold text-gray-900">Viernes, 6 de Marzo</p>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ const Details: React.FC = () => {
             </div>
             <div>
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Hora</p>
-              <p className="text-xl font-bold text-gray-900">21:00 HS - Puerta</p>
+              <p className="text-xl font-bold text-gray-900">19:00 HS - Puerta</p>
             </div>
           </div>
 
@@ -44,14 +44,14 @@ const Details: React.FC = () => {
             </div>
             <div>
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Lugar</p>
-              <p className="text-xl font-bold text-gray-900">El Club de la Amistad, Palermo</p>
+              <p className="text-xl font-bold text-gray-900">Mafil 991, San Bernardo</p>
             </div>
           </div>
         </div>
 
         <motion.a
           whileHover={{ x: 10 }}
-          href="https://maps.google.com"
+          href="https://maps.app.goo.gl/cnxxgSXUEuEEEvos7"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 text-purple-600 font-bold tracking-widest hover:text-purple-900 transition-colors group"
@@ -69,17 +69,19 @@ const Details: React.FC = () => {
       >
         <div className="aspect-[3/4] rounded-3xl overflow-hidden glass relative group">
           <img 
-            src="https://picsum.photos/seed/k4os-concert/800/1200" 
+            src="/public/img/details.jpg" 
             alt="Venue Vibe" 
             className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-          <div className="absolute bottom-8 left-8">
-            <div className="flex items-center gap-2 mb-2 bg-purple-600 px-3 py-1 rounded text-[10px] font-bold">
+          <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-auto">
+            <div className="flex items-center gap-2 mb-2 bg-purple-600 px-3 py-1 rounded text-[10px] font-bold text-white w-fit">
               <Ticket size={12} />
-              ENTRADA LIBRE
+              ENTRADA SOLO CON INVITACIÓN
             </div>
-            <h4 className="text-2xl font-black italic">DRESS CODE: ROCKER/CHROME</h4>
+            <h4 className="text-base md:text-2xl text-white font-black italic drop-shadow-lg leading-tight">
+              DRESS CODE:<br className="md:hidden" /> MORADO/TURQUESA/<br className="md:hidden" />ROJO/ROSA
+            </h4>
           </div>
         </div>
       </motion.div>

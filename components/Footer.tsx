@@ -2,57 +2,35 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full relative overflow-hidden pb-10">
+    <footer className="w-full relative overflow-hidden">
       
       {/* BARRA ANIMADA (Banner K4OS Marquee) */}
-      <div className="w-full relative border-t-2 border-b-2 border-purple-200 bg-white/80 backdrop-blur-sm overflow-hidden py-4 mb-10 group"
+      <div className="w-full relative border-t-2 border-purple-900 bg-purple-950 overflow-hidden py-6"
            style={{
-             boxShadow: 'inset 0px 10px 38px -10px rgba(206, 136, 176, 0.3), inset 0px -10px 38px -10px rgba(206, 136, 176, 0.3)'
+             boxShadow: 'inset 0px 10px 38px -10px rgba(168, 85, 247, 0.3), inset 0px -10px 38px -10px rgba(168, 85, 247, 0.3)'
            }}>
         
-        <div className="flex w-full whitespace-nowrap mask-linear-gradient" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-          {/* Marquee Container */}
-          <div className="flex animate-marquee min-w-full items-center justify-around gap-12 group-hover:[animation-play-state:paused]">
-            {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-6xl md:text-8xl font-black italic tracking-tighter"
-                    style={{
-                      fontFamily: 'system-ui, -apple-system, sans-serif',
-                      background: 'linear-gradient(to bottom, #333 0%, #000 40%, #666 50%, #000 60%, #333 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 0 5px rgba(128, 65, 235, 0.3))'
-                    }}>
-                K4OS
-              </span>
-            ))}
-          </div>
-          
-          {/* Duplicado para loop infinito */}
-          <div className="flex animate-marquee min-w-full items-center justify-around gap-12 group-hover:[animation-play-state:paused] ml-12" aria-hidden="true">
-             {[...Array(10)].map((_, i) => (
-              <span key={'dup-' + i} className="text-6xl md:text-8xl font-black italic tracking-tighter"
-                    style={{
-                      fontFamily: 'system-ui, -apple-system, sans-serif',
-                      background: 'linear-gradient(to bottom, #333 0%, #000 40%, #666 50%, #000 60%, #333 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 0 5px rgba(128, 65, 235, 0.3))'
-                    }}>
-                K4OS
-              </span>
-            ))}
-          </div>
+        <div className="flex whitespace-nowrap animate-marquee-footer">
+          {[...Array(20)].map((_, i) => (
+            <img 
+              key={i}
+              src="/img/k4-k4os-cromo.png" 
+              alt="K4OS" 
+              className="h-16 md:h-24 mx-6 inline-block opacity-90"
+            />
+          ))}
         </div>
       </div>
 
       {/* Estilos para la animación marquee */}
       <style>{`
-        @keyframes marquee {
+        @keyframes marquee-footer {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
+        .animate-marquee-footer {
+          animation: marquee-footer 30s linear infinite;
+          width: max-content;
         }
       `}</style>
     </footer>

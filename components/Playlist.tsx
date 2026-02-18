@@ -9,7 +9,7 @@ const Playlist: React.FC = () => {
     <div className="space-y-12 w-full max-w-2xl mx-auto p-4">
       <div className="text-center space-y-4">
         <h2 className="text-4xl font-black tracking-tighter italic uppercase text-gray-900">
-          VIBES DEL <span className="text-purple-600">FESTIVAL</span>
+          VIBES DEL <span className="text-purple-600">CUMPLE</span>
         </h2>
         <p className="text-gray-600 text-sm max-w-md mx-auto">
           Prepará los oídos para la previa con los mejores hits seleccionados para el cumple.

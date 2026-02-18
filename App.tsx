@@ -11,23 +11,19 @@ import Footer from './components/Footer';
 import FloatingHeart from './components/FloatingHeart';
 
 const App: React.FC = () => {
-  // Target date: March 6th, 2026 at 9:00 PM
-  const TARGET_DATE = "2026-03-06T21:00:00";
-
   return (
-    <div className="min-h-screen bg-white text-gray-900 selection:bg-purple-200 selection:text-purple-900 pb-10 relative">
+    <div className="min-h-screen bg-white text-gray-900 selection:bg-purple-200 selection:text-purple-900 relative">
       <Background />
       <Hero />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
-        <section id="countdown" className="pt-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-12">
+        <section id="countdown" className="pt-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <Countdown targetDate={TARGET_DATE} />
           </motion.div>
         </section>
 
@@ -39,10 +35,31 @@ const App: React.FC = () => {
           <Playlist />
         </section>
 
+        <section id="COUNTDOWN">
+          <Countdown />
+        </section>
+
         <section id="rsvp">
           <RSVPForm />
         </section>
       </main>
+
+      {/* K4OS Band Photo */}
+      <section className="w-full">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full"
+        >
+          <img 
+            src="/img/KAOS - Editado.png" 
+            alt="K4OS Band" 
+            className="w-full h-auto object-cover block"
+          />
+        </motion.div>
+      </section>
 
       <Footer />
     </div>

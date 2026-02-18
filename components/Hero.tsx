@@ -27,8 +27,31 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <header className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
-      {/* Background elements removed for global background */}
+    <header className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-black">
+      {/* Marquee superior con logo K4OS */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden py-4 border-b border-white/10 z-20">
+        <div className="flex whitespace-nowrap animate-marquee-fast">
+          {[...Array(20)].map((_, i) => (
+            <img 
+              key={i}
+              src="/img/k4-k4os-cromo.png" 
+              alt="K4OS" 
+              className="h-16 md:h-20 mx-4 inline-block opacity-80"
+            />
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes marquee-fast {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-fast {
+          animation: marquee-fast 20s linear infinite;
+          width: max-content;
+        }
+      `}</style>
 
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
@@ -36,30 +59,17 @@ const Hero: React.FC = () => {
         transition={{ duration: 1 }}
         className="z-10 px-4"
       >
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-1">
               <FloatingHeart />
         </div>
 
-        <h1 className="text-6xl md:text-9xl font-black mb-4 tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-          MONSE <span className="block text-4xl md:text-6xl not-italic text-gray-900">4EVER</span>
+        <h1 className="text-6xl md:text-9xl font-black mb-4 tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+          MONSE <span className="block text-4xl md:text-6xl not-italic text-white">CUMPLE 9</span>
         </h1>
         
-        <p className="text-xl md:text-2xl font-light text-gray-700 mb-12 max-w-lg mx-auto leading-relaxed">
-          El primer álbum fue un éxito, pero esta <span className="text-purple-600 font-bold underline decoration-wavy">Party</span> va a ser legendaria.
+        <p className="text-xl md:text-2xl font-light text-gray-300 mb-12 max-w-lg mx-auto leading-relaxed">
+          Acompañame a celabrar mi cumplaños al estilo <span className="text-purple-400 font-bold underline decoration-wavy">K4OS</span> 4ever! <br />
         </p>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={triggerConfetti}
-          className="group relative px-8 py-4 bg-purple-600 rounded-full font-bold text-lg overflow-hidden transition-all hover:bg-purple-500 shadow-[0_0_30px_rgba(168,85,247,0.4)]"
-        >
-          <span className="relative z-10 flex items-center gap-2">
-            <Sparkles size={20} />
-            ¡CELEBRAR AHORA!
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </motion.button>
       </motion.div>
 
       {/* Floating Instruments Mockup Decor */}
