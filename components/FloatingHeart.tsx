@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Sparkles, Environment } from '@react-three/drei';
+import { useGLTF, Float, Stage, PresentationControls, Sparkles } from '@react-three/drei';
 import { Suspense, useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
@@ -7,24 +7,25 @@ function Model() {
   const { scene } = useGLTF('/heart_optimized.glb');
   const groupRef = useRef<THREE.Group>(null);
 
-  // ✅ Centrar modelo (sin rotarlo raro)
+  // 🔥 CORREGIR ORIENTACIÓN UNA SOLA VEZ
   useMemo(() => {
-    const box = new THREE.Box3().setFromObject(scene);
-    const center = box.getCenter(new THREE.Vector3());
-    scene.position.sub(center);
+    scene.rotation.x = Math.PI / 2; 
   }, [scene]);
 
-  // ✅ Movimiento
+  // Movimiento
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
 
     if (groupRef.current) {
+      // Giro lento horizontal (de frente)
       groupRef.current.rotation.y += 0.004;
+
+      // Flotación suave
       groupRef.current.position.y = Math.sin(t * 0.8) * 0.1;
     }
   });
 
-  // ✅ TU LÓGICA ORIGINAL DE COLORES — INTACTA
+  // 🔥 TU LÓGICA ORIGINAL DE COLORES (NO TOCADA)
   useMemo(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
@@ -64,33 +65,32 @@ function Model() {
     <primitive
       ref={groupRef}
       object={scene}
-      scale={2}
+      scale={2.2}
     />
   );
 }
 
 export default function FloatingHeart() {
   return (
-    <div className="w-full h-[450px] bg-white flex items-center justify-center overflow-hidden">
-      <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
+    <div className="w-full h-[600px] cursor-grab active:cursor-grabbing relative bg-white overflow-hidden">
+      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 40 }}>
         <Suspense fallback={null}>
-
-          {/* 🔥 Environment SIN sombra */}
-          <Environment preset="city" />
-
-          {/* Luz suave */}
-          <ambientLight intensity={0.8} />
-
-          <Model />
-
-          <Sparkles
-            count={30}
-            scale={5}
-            size={2}
-            speed={0.4}
-            color="#ce88b0"
-          />
-
+          <Stage environment="city" intensity={0.6}>
+            <PresentationControls
+              global
+              config={{ mass: 2, tension: 500 }}
+              snap={{ mass: 4, tension: 1500 }}
+              rotation={[0, 0, 0]}
+              polar={[0, 0]} // Bloquea arriba/abajo para que no se acueste con el mouse
+              azimuth={[-Math.PI, Math.PI]} // Permite giro manual infinito de izquierda a derecha
+            >
+              <Float speed={2} rotationIntensity={0} floatIntensity={1}>
+                <Model />
+              </Float>
+            </PresentationControls>
+          </Stage>
+          
+          <Sparkles count={50} scale={10} size={2} speed={0.4} color="#ce88b0" />
         </Suspense>
       </Canvas>
     </div>
