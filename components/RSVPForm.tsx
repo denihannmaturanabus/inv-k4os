@@ -15,7 +15,7 @@ const RSVPForm: React.FC = () => {
       `Nombre: ${formData.name}\n` +
       `Cantidad de personas: ${formData.guests}\n` +
       `${formData.comment ? `Mensaje: ${formData.comment}\n` : ''}` +
-      `\nNos vemos el 6 de Marzo!`;
+      `\nNos vemos el 7 de Marzo!`;
     
     const numeroWhatsApp = '56958025851';
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
