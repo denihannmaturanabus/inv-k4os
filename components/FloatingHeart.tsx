@@ -75,7 +75,7 @@ export default function FloatingHeart() {
     <div className="w-full h-[600px] cursor-grab active:cursor-grabbing relative bg-white overflow-hidden">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 40 }}>
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6}>
+          <Stage environment="city" intensity={0.6} shadows={false}>
             <PresentationControls
               global
               config={{ mass: 2, tension: 500 }}
