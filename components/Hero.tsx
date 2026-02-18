@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <header className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-black">
+    <header className="relative min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center text-center overflow-hidden bg-black py-20">
       {/* Marquee superior con logo K4OS */}
       <div className="absolute top-0 left-0 w-full overflow-hidden py-3 md:py-4 border-b border-white/10 z-20">
         <div className="flex whitespace-nowrap animate-marquee-fast">
